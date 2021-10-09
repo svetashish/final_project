@@ -1,0 +1,22 @@
+.input_type {
+  margin: 50px auto;
+  height: 20%;
+  width: 100%;
+
+}
+.input_type:focus .input_type:active {
+  outline: none;
+}
+
+.select_all {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  /*min-width: 80%;*/
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
