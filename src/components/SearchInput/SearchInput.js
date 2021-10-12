@@ -1,7 +1,8 @@
-import {TextField, InputAdornment} from '@material-ui/core';
+import {TextField, InputAdornment, FormControl} from '@material-ui/core';
 import {Search} from '@material-ui/icons';
+import {InputLabel} from "@mui/material";
 
-const SearchInput = ({value, onChange, onSubmit, className}) => {
+const SearchInput = ({value, onChange, onSubmit, className, disabled, label}) => {
 
     const handleOnKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -10,22 +11,26 @@ const SearchInput = ({value, onChange, onSubmit, className}) => {
     }
 
     return (
-        <div className={className}>
-            <TextField
-                value={value}
-                onChange={onChange}
-                onKeyDown={handleOnKeyDown}
-                placeholder="Type some value"
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <Search/>
-                        </InputAdornment>
-                    ),
-                }}
-                variant="standard"
-            />
-        </div>
+            <div className={className}>
+                <FormControl fullWidth>
+                    {label &&  <InputLabel>{label}</InputLabel>}
+                    <TextField
+                        value={value}
+                        onChange={onChange}
+                        onKeyDown={handleOnKeyDown}
+                        disabled={disabled}
+                        placeholder="Type some value"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Search/>
+                                </InputAdornment>
+                            ),
+                        }}
+                        variant="standard"
+                    />
+                </FormControl>
+            </div>
     );
 };
 

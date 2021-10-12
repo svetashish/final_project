@@ -1,5 +1,13 @@
 .app {
-    width: 100vw;
+    color: #cce4f4;;
     height: 100vh;
-    color: #666666;
+    text-shadow: #000000 0px 1px 0px;
+    font-family: Palatino, Georgia, serif;
+    font-weight: normal;
+    font-size: 18px;
+    background: border-box linear-gradient(rgba(30, 109, 160, 0.8) 0%, #1e6da0), url("http://numbersapi.com/img/background.jpg?1582176005");
+
+
+
+
 }

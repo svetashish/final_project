@@ -1,9 +1,9 @@
 export default class NumberApi {
-    async find(search) {
+    async find(number,type) {
 
-        const response = await fetch(`http://numbersapi.com/${search}?json`);
+        const response = await fetch(`http://numbersapi.com/${number}/${type}?json`);
         const data = await response.json();
-        return data.text ? data.text : null;
+        return data.found ? data.text : null;
 
     }
 
