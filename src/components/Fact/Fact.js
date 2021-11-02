@@ -4,7 +4,6 @@ const Fact = () => {
             Fact is great
         </div>
     );
-
 };
 
 export default Fact;

@@ -5,8 +5,9 @@ import TypeSelect from "../TypeSelect/TypeSelect";
 import SearchInput from "../SearchInput/SearchInput";
 import NumberApi from "../../servises/NumberApi";
 import NumberSelect from "../NumberSelect/NumberSelect";
-import Button from "../Button/Button";
 import NoData from "../NoData/NoData";
+import RandomApi from "../../servises/RandomApi";
+import SubmitButton from "../SubmitButton/SubmitButton";
 
 const Home = () => {
     const history = useHistory();
@@ -18,16 +19,17 @@ const Home = () => {
     const [month, setMonth] = useState('')
     const [factResult, setFactResult] = useState('');
 
-    // const loadFact = async () =  {
-    //     const api = new NumberApi();
-    //     const fact = await api.find(search);
-    //
-    // }
-
     const handleOnSubmit = async () => {
         const api = new NumberApi();
         const fact = await api.find(search,type);
         setFactResult(fact);
+        // history.push(`/fact`)
+    }
+
+    const handleOnRandomSubmit = async () => {
+        const api = new RandomApi();
+        const fact = await api.find(type);
+        setFactResult(fact.text);
         // history.push(`/fact`)
     }
 
@@ -72,22 +74,19 @@ const Home = () => {
                             onChange={event => setNumber(event.target.value)}
                         />
                         {number === 'random'
-                        ? <> {setSearch(number)}
-                        <SearchInput
-                            className={styles.input_type}
-                            value={search}
-                            disabled={!number}
-                            onSubmit={handleOnSubmit}
-                        />
+                            ? <>
+                                <SubmitButton
+                                    text='Get random fact'
+                                    onClick={handleOnRandomSubmit}
+                                />
                             </>
-                        : <SearchInput
-                        className={styles.input_type}
-                        value={search}
-                        disabled={!number}
-                        onChange={event => setSearch(event.target.value)}
-                        onSubmit={handleOnSubmit}
-
-                    />}
+                            : <SearchInput
+                                className={styles.input_type}
+                                value={search}
+                                disabled={!number}
+                                onChange={event => setSearch(event.target.value)}
+                                onSubmit={handleOnSubmit}
+                            />}
                     </>
                 }
             </div>
